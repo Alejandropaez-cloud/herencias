@@ -1,11 +1,11 @@
 package p61alejandropaez;
 
-public final class Pantalon extends Ropa {
+public final class Pantalon extends Ropa implements SeEnvia {
     
     // Creación de atributos.
     private int talla;
 
-    // Getters y Setters
+    // Getters y Setters. 
     public int getTalla() {
         return talla;
     }
@@ -26,8 +26,11 @@ public final class Pantalon extends Ropa {
         this.talla = talla;
     }
 
-    
-    
-
-    
+    // Método enviar de la interfaz SeEnvia
+    @Override
+    public void enviar(String direccion) {
+        System.out.println(this.toString());
+        System.out.println("Tipo: Ropa");
+        System.out.println("Dirección de envío: " + direccion);
+    }
 }

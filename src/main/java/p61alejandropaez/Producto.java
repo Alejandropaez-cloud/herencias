@@ -41,6 +41,7 @@ public abstract class Producto {
                 + "]";
     }
     
+    // Constructor
     public Producto(int codigo, double precio, int iva, String descripcion) {
         this.codigo = codigo;
         this.precio = precio;
@@ -48,6 +49,30 @@ public abstract class Producto {
         this.descripcion = descripcion;
     }
 
+    // Equals y hashcode por codigo.
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + codigo;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Producto other = (Producto) obj;
+        if (codigo != other.codigo)
+            return false;
+        return true;
+    }
+
+    
     
     
 }
