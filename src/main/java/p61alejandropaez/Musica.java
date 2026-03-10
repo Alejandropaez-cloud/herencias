@@ -1,8 +1,6 @@
 package p61alejandropaez;
 
-public final class Musica extends Producto implements SeDescarga{
- 
-    // Creacion de atributos.
+public final class Musica extends Producto {
     private String grupo;
 
     // Getters y setters
@@ -14,22 +12,21 @@ public final class Musica extends Producto implements SeDescarga{
         this.grupo = grupo;
     }
 
-    // toString
-    @Override
-    public String toString() {
-        return "Musica [grupo=" + grupo + "]";
-    }
-
-    // Constructor.
-    public Musica(int codigo, double precio, int iva, String descripcion, String grupo) {
-        super(codigo, precio, iva, descripcion);
+    // constructor parametrizado
+    public Musica(String codigo, double precio, double iva, String descrip, String grupo) {
+        super(codigo, precio, iva, descrip);
         this.grupo = grupo;
     }
 
-    // Método descargar de la interfaz SeDescarga
-    @Override
-    public void descargar() {
-        String url = "http://descarga.daw/" + this.hashCode();
-        System.out.println(url);
+    // Constructor sin parametrizar
+    public Musica() {
     }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Musica [grupo=" + grupo + ", getCodigo()=" + getCodigo()
+                + ", getPrecio()=" + getPrecio() + ", getIva()=" + getIva() + ", getDescrip()=" + getDescrip() + "]";
+    }
+
 }

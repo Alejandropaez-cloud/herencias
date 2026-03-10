@@ -1,11 +1,9 @@
 package p61alejandropaez;
 
-public final class LibroPapel extends Libro implements SeEnvia{
+public final class LibroPapel extends Libro implements SeEnvia {
 
-    // Atributos
     private int numPaginas;
 
-    // Getters y setters
     public int getNumPaginas() {
         return numPaginas;
     }
@@ -13,23 +11,24 @@ public final class LibroPapel extends Libro implements SeEnvia{
     public void setNumPaginas(int numPaginas) {
         this.numPaginas = numPaginas;
     }
-    // toString
+
     @Override
     public String toString() {
         return "LibroPapel [numPaginas=" + numPaginas + "]";
     }
 
-    // Constructor
-    public LibroPapel(int codigo, double precio, int iva, String descripcion, String isbn, int numPaginas) {
-        super(codigo, precio, iva, descripcion, isbn);
+    public LibroPapel(String codigo, double precio, double iva, String descrip, String isbn, int numPaginas) {
+        super(codigo, precio, iva, descrip, isbn);
         this.numPaginas = numPaginas;
     }
 
-    // Método enviar de la interfaz SeEnvia
-    @Override
     public void enviar(String direccion) {
-        System.out.println(this.toString());
-        System.out.println("Tipo: Libro");
-        System.out.println("Dirección de envío: " + direccion);
+        System.out.println("Información: " + this.toString() + ", tipo Libro, dirección: " + direccion);
     }
+
+    @Override
+    public void borrarLibro() {
+        System.out.println("Libro a la hoguera");
+    }
+
 }
