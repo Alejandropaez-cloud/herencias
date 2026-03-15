@@ -1,16 +1,21 @@
 package p61alejandropaez;
 
-public final class LibroDigital extends Libro implements SeDescarga{
+public final class LibroDigital extends Libro implements SeDescarga {
 
-    // Atributos.
-    private int numKBytes;
+    private double numKBytes;
 
-    // Getters y setters.
-    public int getNumKBytes() {
+    // Getters y setters
+    public double getNumKBytes() {
         return numKBytes;
     }
 
-    public void setNumKBytes(int numKBytes) {
+    public void setNumKBytes(double numKBytes) {
+        this.numKBytes = numKBytes;
+    }
+
+    // Constructor
+    public LibroDigital(String codigo, double precio, double iva, String descrip, String isbn, double numKBytes) {
+        super(codigo, precio, iva, descrip, isbn);
         this.numKBytes = numKBytes;
     }
 
@@ -20,16 +25,12 @@ public final class LibroDigital extends Libro implements SeDescarga{
         return "LibroDigital [numKBytes=" + numKBytes + "]";
     }
 
-    // Constructor
-    public LibroDigital(int codigo, double precio, int iva, String descripcion, String isbn, int numKBytes) {
-        super(codigo, precio, iva, descripcion, isbn);
-        this.numKBytes = numKBytes;
+    @Override // Esto se debe hacer
+    public void descargar() {
+        // return "http://tunombre.daw/hashcode";
     }
 
-    // Método descargar de la interfaz SeDescarga
-    @Override
-    public void descargar() {
-        String url = "http://descarga.daw/" + this.hashCode();
-        System.out.println(url);
+    public void borrarLibro() {
+        System.out.println("Eliminando el archivo");
     }
 }

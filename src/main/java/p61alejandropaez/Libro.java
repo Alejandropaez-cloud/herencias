@@ -1,11 +1,14 @@
 package p61alejandropaez;
 
 public abstract class Libro extends Producto implements Comparable<Libro> {
-    
-    // Creacion de los atribtos.
+
     private String isbn;
 
-    // Getters y setters
+    public Libro(String codigo, double precio, double iva, String descrip, String isbn) {
+        super(codigo, precio, iva, descrip);
+        this.isbn = isbn;
+    }
+
     public String getIsbn() {
         return isbn;
     }
@@ -14,33 +17,15 @@ public abstract class Libro extends Producto implements Comparable<Libro> {
         this.isbn = isbn;
     }
 
-    // toString
     @Override
     public String toString() {
         return "Libro [isbn=" + isbn + "]";
     }
 
-    // Método compareTo de la interfaz Comparable
-    @Override
-    public int compareTo(Libro otro) {
-        if (otro == null)
-            return 1;
-        return this.isbn.compareTo(otro.isbn);
-    }
-
-
-
-    // Constructor.
-    public Libro(int codigo, double precio, int iva, String descripcion, String isbn) {
-        super(codigo, precio, iva, descripcion);
-        this.isbn = isbn;
-    }
-
-    // Equals y hashcode por ISBN.
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result = super.hashCode();
+        int result = 1;
         result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
         return result;
     }
@@ -50,8 +35,6 @@ public abstract class Libro extends Producto implements Comparable<Libro> {
         if (this == obj)
             return true;
         if (obj == null)
-            return false;
-        if (!super.equals(obj))
             return false;
         if (getClass() != obj.getClass())
             return false;
@@ -64,5 +47,12 @@ public abstract class Libro extends Producto implements Comparable<Libro> {
         return true;
     }
 
-    
+    // metodo para comparar libros por su isbn
+    public int compareTo(Libro libro1) {
+        return this.isbn.compareTo(libro1.getIsbn());
+    }
+
+    //17-. Nuevo metodo
+
+    public abstract void borrarLibro();
 }
